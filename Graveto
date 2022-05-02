@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main (void){
+
+int i;
+//definindo matriz, sendo cada byte uma linha de 8 colunas:
+unsigned char matriz[8];
+
+//Preenchendo matriz de forma 'aleatória':
+srand(time(0));
+
+for(i = 0; i < 8; i++){
+
+	matriz[i] = (rand()%100)+'0';
+	printf("%c", matriz[i]);
+
+}
+	
+}
