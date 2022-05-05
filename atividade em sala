@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int* myrealloc(int *x, int tamanhoAntigo, int tamanhoNovo){
+	int *y, i;
+	y = malloc(tamanhoNovo * sizeof(int));
+	
+	if(tamanhoAntigo > tamanhoNovo){
+		for (i = 0; i < tamanhoNovo; i++) {
+    	y[i] = x[i];
+  	}
+  		return y;
+	}
+	
+	else if(tamanhoAntigo < tamanhoNovo){
+		for (i = 0; i < tamanhoNovo; i++) {
+    		if(i > (tamanhoAntigo - 1)){
+				y[i] = 0;
+			}
+			else{
+				y[i] = x[i];
+			}
+		
+  		}
+  	return y;
+	}
+	
+	else {
+		return x;
+	}
+	free(x);
+}
+
+int main(int argc, char *argv[]) {
+	int *x, tamanhoAntigo =3, tamanhoNovo =5, i;
+  	
+	x = malloc(tamanhoAntigo * sizeof(int));
+  	
+	for (i = 0; i < tamanhoAntigo; i++) {
+    	x[i] = i + 1;
+  	}
+  	
+	for (i = 0; i < tamanhoAntigo; i++) {
+    	printf("%d, ", x[i]);
+  	}
+  	
+	printf("\n");
+  	
+	x = myrealloc(x, tamanhoAntigo, tamanhoNovo);
+  	
+	for (i = 0; i < tamanhoNovo; i++) {
+    	printf("%d, ", x[i]);
+  	}
+  	
+  	free(x);
+	printf("\n");
+	return 0;
+}
